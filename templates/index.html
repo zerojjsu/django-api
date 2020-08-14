@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Tareas</title>
+    <style>
+        * {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+			font-family: Arial, Helvetica, sans-serif;
+		}
+
+		body {
+			background: linear-gradient(#ffffff, #e9e9e9);
+		}
+
+		h1, h2 {
+			color:rgb(0, 0, 0);
+            text-align: center;
+		}
+
+		p {
+			color: #000000;
+		}
+
+		.lista {
+			padding: 2.5% 5%;
+		}
+
+		.tarea-container {
+			display: inline-grid;
+			justify-content: center;
+			max-width: 100vw;
+			width: 100vw;
+		}
+
+		.tarea {
+			display: block;
+			margin: 0.5rem;
+			padding: 1.5rem 2.5rem;
+			border: 2px solid #969696;
+			border-radius: 15px;
+		}
+		
+		ol {
+			list-style: none;
+			padding: 0 2.5rem;
+			margin-top: 1rem;
+			color: #000000;
+		}
+
+		#tarea {
+			font-weight: bold;
+			font-size: 1.2rem;
+		}
+
+		#nombre {
+			font-weight: bold;
+			font-size: 1rem;
+		}
+
+		form {
+			margin-top: 2rem;
+			padding: 2.5% 5%;
+		}
+
+		input[type=text] {
+			width: 100%;
+			padding: 12px 20px;
+			margin: 8px 0;
+			box-sizing: border-box;
+		}
+
+		input[type=text]:focus {
+			border: 3px solid #555;
+		}
+		
+		button {
+			padding: 1rem;
+			background: transparent;
+			color: #000000;
+			border-radius: 10px;
+			transition: background 250ms ease-in;  
+		}
+
+		button:hover {
+			background: #383838;
+			color: #ffffff;
+		}
+    </style>
+</head>
+<body>
+    <div class="panel-tareas">
+        <h1>Tareas</h1>
+        <div class="tarea-container">
+
+			{% for item in tareas %}
+			<div class="tarea">
+
+				<p id="nombre-tarea">{{ item.tarea }}</p> 
+				<br>
+                <p id="decripcion-tarea">{{ item.descripcion }}</p>
+                <br>
+                <p id="asignatura-tarea">Asignatura: {{ item.asignatura }}</p>   
+				<br>
+                <p id="fecha-tarea">Fecha de Entrega: {{ item.fecha_entrega }}</p>
+                <br>
+                <p id="nivel-tarea">Nivel de Complejidad: {{ item.nivel }}</p>
+				
+			</div>
+            
+            {% endfor %}
+		
+		</div>
+
+    </div>
+
+    <hr>
+
+    <form method="POST" action="agregarTarea">
+		<h2>¡Ingresa nueva tarea!</h2>
+
+		<br>
+
+		{% csrf_token %}
+
+		<p>Título de tarea:</p>
+		<input type="text" name="tarea">
+
+		<p>Descripción:</p>
+        <textarea name="descripcion" cols="50" rows="10"></textarea>
+
+		<p>Asignatura o Materia:</p>
+		<input type="text" name="asignatura">
+
+        <p>Fecha de Entrega o Fecha Límite:</p>
+        <input type="date" name="fecha">
+
+		<p>Nivel de Complejidad (1 Fácil - 5 Difícil):</p>
+		<input type="number" min="1" max="5" name="nivel">
+        
+        <br><br>
+        
+        <button type="submit">Guardar Tarea</button>
+	</form>
+</body>
+</html>

@@ -1,0 +1,21 @@
+Proyecto API Django - SOA 9ºA
+
+Integrantes del equipo: 
+Sofía Verónica Ro
+Alejandro Vázquez del Mercado Gutiérrez
+Carlos Alexis Vazquez Contreras
+
+Instrucciones para correr el proyecto:
+   1.- Instalar rest_framework: "pip install djangorestframework"
+   2.- Correr el proyecto con: "python manage.py runserver" o "python3 manage.py runserver"
+   3.- En el localhost:8000/ se pueden observar el api con la función de GET y POST, para acceder al de tareas es: "localhost:8000/tareas/", se pueden ver en formato JSON. 
+   4.- Se pueden insertar más registros en forma RAW del JSON o con formulario de HTML.
+   5.- Para entrar al demo del panel de tareas se debe acceder al link "localhost:8000/panel-demo", ahí están todas las tareas registradas en un formato limpio y abajo se pueden registrar más tareas.
+
+Datos mediante POST y GET:
+- tarea
+- descripcion
+- asignatura
+- fecha_entrega
+- nivel
+- material
